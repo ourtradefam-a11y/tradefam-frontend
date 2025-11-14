@@ -1,12 +1,11 @@
-import PortfolioDashboard from './components/PortfolioDashboard';
-import MacroScenarioSimulator from './components/MacroScenarioSimulator';
-import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import './App.css';
-import CMCImport from './components/CMCImport';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
+import PortfolioDashboard from './components/PortfolioDashboard';
+import MacroScenarioSimulator from './components/MacroScenarioSimulator';
+import CMCImport from './components/CMCImport';
 import PortfolioDetail from './components/PortfolioDetail';
 import PortfolioPage from './components/PortfolioPage';
 import Navigation from './components/Navigation';
