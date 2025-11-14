@@ -4,6 +4,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import './App.css';
+import CMCImport from './components/CMCImport';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
 import PortfolioDetail from './components/PortfolioDetail';
@@ -26,6 +27,9 @@ function App() {
   <Route path="/portfolio-dashboard" element={
     isAuthenticated ? <PortfolioDashboard /> : <Navigate to="/" />
   } />
+<Route path="/import" element={
+  isAuthenticated ? <CMCImport /> : <Navigate to="/" />
+} />
   <Route path="/scenarios" element={
     isAuthenticated ? <MacroScenarioSimulator /> : <Navigate to="/" />
   } />
