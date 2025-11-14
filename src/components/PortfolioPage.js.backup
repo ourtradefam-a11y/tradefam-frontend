@@ -1,0 +1,68 @@
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { useAuth0 } from '@auth0/auth0-react';
+import api from '../services/api';
+import PortfolioSummary from './PortfolioSummary';
+import './Portfolio.css';
+import PositionCard from './PositionCard';
+
+const PortfolioPage = () => {
+  const { id } = useParams();
+  const { getAccessTokenSilently } = useAuth0();
+  
+  const [summary, setSummary] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [showForm, setShowForm] = useState(false);
+  const [formData, setFormData] = useState({ symbol: "", quantity: "", average_cost: "" });
+  const [refreshing, setRefreshing] = useState(false);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    fetchSummary();
+  }, [id]);
+
+  const fetchSummary = async (refresh = false) => {
+    try {
+      setLoading(true);
+      const token = await getAccessTokenSilently();
+      const response = await api.getPortfolioSummary(token, id, refresh);
+      setSummary(response.data);
+      setError('');
+    } catch (err) {
+      console.error('Error:', err);
+      setError('Failed to load portfolio');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleRefresh = async () => {
+    setRefreshing(true);
+    await fetchSummary(true);
+    setRefreshing(false);
+  };
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>{error}</div>;
+
+  return (
+    <div className="portfolio-page">
+      <PortfolioSummary 
+        summary={summary} 
+        onRefresh={handleRefresh}
+        refreshing={refreshing}
+      />
+      
+      <div className="positions-list">
+        <h2>Positions</h2>
+        <div className="positions-grid">
+          {summary?.positions.map(position => (
+            <PositionCard key={position.id} position={position} />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default PortfolioPage;
