@@ -21,4 +21,4 @@ RUN npm install -g serve
 EXPOSE 8080
 
 # Start - let Railway set the port
-CMD npx serve -s build -p $PORT
+CMD serve -s build -l 8080
