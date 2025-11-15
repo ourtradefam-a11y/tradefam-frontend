@@ -5,7 +5,7 @@ import Login from './components/Login';
 import Dashboard from './components/Dashboard';
 import PortfolioDashboard from './components/PortfolioDashboard';
 import MacroScenarioSimulator from './components/MacroScenarioSimulator';
-import CMCImport from './components/CMCImport';
+import CMCImport from './components/CMCImportTest';
 import PortfolioDetail from './components/PortfolioDetail';
 import PortfolioPage from './components/PortfolioPage';
 import Navigation from './components/Navigation';
