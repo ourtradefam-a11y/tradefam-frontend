@@ -68,7 +68,7 @@ const CMCImport = ({ onImportSuccess }) => {
       const portfolioId = '23f6a3f8-efaa-444a-a1d8-3d9acae9cfef'; //Test portfolio
       
       const response = await axios.post(
-        `https://lucid-abundance-production.up.railway.app/api/v1/portfolios/${portfolioId}/import/cmc-csv`,`,
+        `https://lucid-abundance-production.up.railway.app/api/v1/portfolios/${portfolioId}/import/cmc-csv`,
         formData,
         {
           headers: {
