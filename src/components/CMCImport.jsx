@@ -65,7 +65,7 @@ const CMCImport = ({ onImportSuccess }) => {
 
     try {
       // Replace with your actual portfolio ID
-      const portfolioId = 'YOUR_PORTFOLIO_ID'; //Test portfolio
+      const portfolioId = '23f6a3f8-efaa-444a-a1d8-3d9acae9cfef'; //Test portfolio
       
       const response = await axios.post(
         `${process.env.REACT_APP_API_URL}/api/v1/portfolios/${portfolioId}/import/cmc-csv`,
