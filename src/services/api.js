@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8000/api/v1';
+const API_URL = 'https://lucid-abundance-production.up.railway.app/api/v1';
 
 const api = {
   getPortfolios: (token) => {
