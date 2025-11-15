@@ -2,23 +2,16 @@ FROM node:20-alpine
 
 WORKDIR /app
 
-# Copy package files
 COPY package*.json ./
-
-# Install dependencies
 RUN npm install
 
-# Copy source
 COPY . .
-
-# Build app
 RUN npm run build
 
-# Install serve globally
-RUN npm install -g serve
+# Use http-server instead of serve
+RUN npm install -g http-server
 
-# Expose port
 EXPOSE 8080
 
-# Start - let Railway set the port
-CMD serve -s build -l 8080
+# Start with http-server
+CMD ["http-server", "build", "-p", "8080", "--proxy", "http://localhost:8080?"]
