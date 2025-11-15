@@ -21,33 +21,16 @@ function App() {
     <Router>
       <div className="App">
         <Navigation />
-       <Routes>
-  {/* New Portfolio Dashboard Routes */}
-  <Route path="/portfolio-dashboard" element={
-    isAuthenticated ? <PortfolioDashboard /> : <Navigate to="/" />
-  } />
-<Route path="/import" element={
-  isAuthenticated ? <CMCImport /> : <Navigate to="/" />
-} />
-  <Route path="/scenarios" element={
-    isAuthenticated ? <MacroScenarioSimulator /> : <Navigate to="/" />
-  } />
-  
-  {/* Existing Routes */}
-  <Route path="/" element={
-    isAuthenticated ? <Navigate to="/dashboard" /> : <Login />
-  } />
-  <Route path="/dashboard" element={
-    isAuthenticated ? <Dashboard /> : <Navigate to="/" />
-  } />
-  <Route path="/portfolio/:id" element={
-    isAuthenticated ? <PortfolioPage /> : <Navigate to="/" />
-  } />
-  <Route path="/portfolio/:id/manage" element={
-    isAuthenticated ? <PortfolioDetail /> : <Navigate to="/" />
-  } />
-</Routes>
-     </div>
+        <Routes>
+          <Route path="/portfolio-dashboard" element={isAuthenticated ? <PortfolioDashboard /> : <Navigate to="/" />} />
+          <Route path="/import" element={isAuthenticated ? <CMCImport /> : <Navigate to="/" />} />
+          <Route path="/scenarios" element={isAuthenticated ? <MacroScenarioSimulator /> : <Navigate to="/" />} />
+          <Route path="/" element={isAuthenticated ? <Navigate to="/dashboard" /> : <Login />} />
+          <Route path="/dashboard" element={isAuthenticated ? <Dashboard /> : <Navigate to="/" />} />
+          <Route path="/portfolio/:id" element={isAuthenticated ? <PortfolioPage /> : <Navigate to="/" />} />
+          <Route path="/portfolio/:id/manage" element={isAuthenticated ? <PortfolioDetail /> : <Navigate to="/" />} />
+        </Routes>
+      </div>
     </Router>
   );
 }
